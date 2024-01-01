@@ -5,6 +5,7 @@ import React from "react";
 import {Inter as FontSans} from "next/font/google"
 import {NextFontWithVariable} from "next/dist/compiled/@next/font";
 import {ThemeProvider} from "@/components/theme-provider";
+import {RootLayoutProps} from "@/types/props/root";
 
 
 export const metadata: Metadata = {
@@ -15,14 +16,12 @@ const fontSans: NextFontWithVariable = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 })
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+
+const RootLayout = ({children}: RootLayoutProps) => {
   return (
-    <html lang="en">
-    <body className={cn(
+    <html lang="en" suppressHydrationWarning>
+    <body suppressHydrationWarning
+          className={cn(
         "min-h-screen bg-background font-sans antialiased",
         fontSans.variable
     )}>
@@ -38,3 +37,4 @@ export default function RootLayout({
     </html>
   )
 }
+export default RootLayout;
