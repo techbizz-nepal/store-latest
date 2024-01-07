@@ -5,7 +5,8 @@ import React from "react";
 import {Inter as FontSans} from "next/font/google"
 import {NextFontWithVariable} from "next/dist/compiled/@next/font";
 import {ThemeProvider} from "@/components/theme-provider";
-import {RootLayoutProps} from "@/types/props/root";
+import ContainerCommon from "@/modules/common/presentation/components/container-common";
+import {IRootLayoutProps} from "@/modules/common/domain/types/common";
 
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ const fontSans: NextFontWithVariable = FontSans({
   variable: "--font-sans",
 })
 
-const RootLayout = ({children}: RootLayoutProps) => {
+const RootLayout = ({children}: IRootLayoutProps) => {
   return (
     <html lang="en" suppressHydrationWarning>
     <body suppressHydrationWarning
@@ -31,7 +32,9 @@ const RootLayout = ({children}: RootLayoutProps) => {
         enableSystem
         disableTransitionOnChange
     >
-      {children}
+      <ContainerCommon>
+        {children}
+      </ContainerCommon>
     </ThemeProvider>
     </body>
     </html>
